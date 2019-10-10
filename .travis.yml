@@ -12,8 +12,5 @@ install:
   - sudo mysql -e "CREATE USER 'iissi_user'@'localhost' IDENTIFIED BY 'iissi$user';"
   - sudo mysql -e "GRANT ALL ON grados.* TO 'iissi_user'@'localhost';"
 
-before_script:
-  - cd $TRAVIS_BUILD_DIR/Silence/
-
 script:
   - python3 run_tests.py

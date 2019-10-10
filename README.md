@@ -1,3 +1,5 @@
+# Silence [![Build Status](https://travis-ci.org/IISSI-1/Silence.svg?branch=master)](https://travis-ci.org/IISSI-1/Silence)
+
 # How to install the virtual environment
 
 - Open a console prompt in the framework's root folder.
