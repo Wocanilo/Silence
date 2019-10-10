@@ -90,7 +90,7 @@ class SubjectDAL(BaseDAL):
             *The OID assigned to the subject that we have inserted
         '''
 
-        q = "INSERT INTO subjects (name, acronym, credits, course, type, degreeId) VALUES (%s, %s, %s, %s, %s, %s)"
+        q = "INSERT INTO Subjects (name, acronym, credits, course, type, degreeId) VALUES (%s, %s, %s, %s, %s, %s)"
         params = (name, acronym, n_credits, course, subject_type, degreeId)
         res = self.execute(q, params)
         return res
@@ -104,7 +104,7 @@ class SubjectDAL(BaseDAL):
             *The OID of the subject that we have updated
         '''
 
-        q = "UPDATE subjects SET name = %s, acronym = %s, credits = %s, course = %s, type = %s, degreeId = %s WHERE subjectId = %s"
+        q = "UPDATE Subjects SET name = %s, acronym = %s, credits = %s, course = %s, type = %s, degreeId = %s WHERE subjectId = %s"
         params = (name, acronym, n_credits, course, subject_type, degreeId, oid)
         res = self.execute(q, params)
         return res
@@ -118,7 +118,7 @@ class SubjectDAL(BaseDAL):
             *The OID of the subject that was deleted
         '''
 
-        q = "DELETE FROM subjects WHERE subjectId = %s"
+        q = "DELETE FROM Subjects WHERE subjectId = %s"
         params = (oid,)
         res = self.execute(q, params)
         return res
