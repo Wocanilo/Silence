@@ -1,3 +1,5 @@
+USE grados;
+
 DROP TABLE IF EXISTS Grades;
 DROP TABLE IF EXISTS GroupsStudents;
 DROP TABLE IF EXISTS Students;

@@ -13,4 +13,5 @@ install:
   - sudo mysql -e "GRANT ALL ON grados.* TO 'iissi_user'@'localhost';"
 
 script:
+  - python3 populate_database.py
   - python3 run_tests.py
