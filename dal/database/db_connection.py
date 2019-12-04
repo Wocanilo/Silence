@@ -20,9 +20,13 @@ selected_engine = DB_CONFIG["db_engine"]
 if selected_engine == "oracle":
     conn = oracle_engine.connect(f'{DB_CONFIG["user"]}/{DB_CONFIG["password"]}@localhost/XE')
 elif selected_engine == "mariadb":
-    config_data = DB_CONFIG.copy()
-    del config_data["db_engine"]
-    conn = mariadb_engine.connect(**config_data)
+    conn = mariadb_engine.connect(
+        host=DB_CONFIG["host"],
+        port=DB_CONFIG["port"],
+        user=DB_CONFIG["user"],
+        password=DB_CONFIG["password"],
+        database=DB_CONFIG["database"]
+    )
 else:
     raise SystemError('DB engine "' + DB_CONFIG["db_engine"] + '" is not supported.')
 

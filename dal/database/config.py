@@ -11,6 +11,9 @@ DB_CONFIG = {
     "password": "iissi$user",
     "database": "grados",
     "db_engine": "mariadb",
+    "sql_scripts": [
+        'create_database.sql',
+    ]
 }
 
 # Supported DB engines are "oracle" and "mariadb" (MariaDB also supports MySQL)
