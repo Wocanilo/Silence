@@ -15,10 +15,24 @@ def create_database(verbose=False):
     for script in DB_CONFIG["sql_scripts"]:
         print(f"Executing {script}:")
         with open(f"sql/{script}", "r", encoding="utf-8") as f:
-            for stmt in f.read().split(";"):
-                if not stmt or stmt.strip() == "": continue  # Skip blank lines
-                if verbose: print(stmt + ";")
-                cursor.execute(stmt)
+            stmt = ""
+            delimiter = ";"
+            for line in f:
+                if not line or line.strip() == "": continue  # Skip blank lines
+                
+                # Emulate the DELIMITER sentence
+                if "DELIMITER" in line.upper():
+                    delimiter = line.split(" ")[1].strip()
+                else:
+                    if delimiter in line.upper():
+                        if delimiter != ";": stmt += line.replace(delimiter, ";")
+                        else: stmt += line
+
+                        if verbose: print(stmt)
+                        cursor.execute(stmt)
+                        stmt = ""
+                    else:
+                        stmt += line
     conn.commit()
     cursor.close()
 
